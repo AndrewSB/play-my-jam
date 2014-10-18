@@ -29,7 +29,7 @@ app.post('/incoming', function(request, response) {
     var message = request.body.Body;
     var from = request.body.From;
     sys.log('From: ' + from + ', Message: ' + message);
-       var twiml = "<?xml version="1.0" encoding="UTF-8" ?>n<Response>n<Sms>Thanks for your text, we'll be in touch.</Sms>n</Response>";
+       var twiml = '<?xml version="1.0" encoding="UTF-8" ?>n<Response>n<Sms>Thanks for your text, we'll be in touch.</Sms>n</Response>';
        response.send(twiml, {'Content-Type':'text/xml'}, 200);
 });
 
