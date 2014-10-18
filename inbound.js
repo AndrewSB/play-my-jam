@@ -4,15 +4,6 @@ var twilio = require('twilio'),
 
 // Create an HTTP server, listening on port 1337, that
 // will respond with a TwiML XML document
-app.post('/incoming', function(req, res) {
-var message = req.body.Body;
-var from = req.body.From;
-sys.log('From: ' + from + ', Message: ' + message);
-
-               var twiml = '<?xml version="1.0" encoding="UTF-8" ?>n<Response>n<Sms>Thanks for your text, we'll be in touch.</Sms>n</Response>';
-
-               res.send(twiml, {'Content-Type':'text/xml'}, 200);
-});
 
 http.createServer(function (req, res) {
     // Create a TwiML response
