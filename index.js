@@ -29,14 +29,11 @@ app.post('/incoming', function(request, response) {
     var message = request.body.Body;
     var from = request.body.From;
     sys.log('From: ' + from + ', Message: ' + message);
-       var twiml = '<?xml version="1.0" encoding="UTF-8" ?>n<Response>n<Sms>Thanks for your text, we'll be in touch.</Sms>n</Response>';
+    var twiml = '<?xml version="1.0" encoding="UTF-8" ?>n<Response>n<Sms>Thanks for your text, we\'ll be in touch.</Sms>n</Response>';
        response.send(twiml, {'Content-Type':'text/xml'}, 200);
 });
 
-// app.listen(app.get('port'), function() {
-//   console.log("Node app is running at localhost:" + app.get('port'))
-// })
-
+// app.listen(app.get('port'), function() { //   console.log("Node app is running at localhost:" + app.get('port')) // })
 var rapgeniusClient = require("rapgenius-js");
 
 var lyricsSearchCb = function(err, lyricsAndExplanations){
