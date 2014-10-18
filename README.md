@@ -1,6 +1,8 @@
-play-my-jam
+musictext
 ===========
 
-Text a song name, listen to it on your phone. It's that simple #playmyjam
+Text a song name, listen to it on your phone. It's that simple #musictext
 
-Made with love at Boilermake Fall 2014 by [Andrew Breckenridge](https://github.com/AndrewSB) and [Arjun Sarode](https://github.com/asarode)
+
+Made with love at Boilermake Fall 2014 by [Hilal Habashi](https://github.com/hilalh) and [Ore Aleb](https://github.com/orealeb)
+

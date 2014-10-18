@@ -6,7 +6,8 @@ var twilio = require('twilio'),
 // will respond with a TwiML XML document
 
 http.createServer(function (req, res) {
-    // Create a TwiML response
+  
+  // Create a TwiML response
     var resp = new twilio.TwimlResponse();
 
     // The TwiML response object will have functions on it that correspond
