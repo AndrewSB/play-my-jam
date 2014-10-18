@@ -7,7 +7,9 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "~4.9.x"
+    "express": "~4.9.x",
+    "twilio": "1.7.x",
+    "restler": "3.2.x"
   },
   "engines": {
     "node": "0.10.x"
