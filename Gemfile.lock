@@ -33,6 +33,7 @@ GEM
       builder (>= 2.1.2)
       jwt (~> 1.0.0)
       multi_json (>= 1.3.0)
+    youtube_search (0.1.10)
 
 PLATFORMS
   ruby
@@ -44,3 +45,4 @@ DEPENDENCIES
   sinatra
   soundcloud
   twilio-ruby
+  youtube_search
