@@ -23,6 +23,18 @@ def rap_genius_from_name(query, number)
 	"genius.com/songs/" + id
 end
 
+def hilals_lyrics(query, number)
+	uri = URI.parse("http://gaasme.ngrok.com")
+	http = Net::HTTP.new(uri.host, uri.port)
+	http.use_ssl = true
+	http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+	request = Net::HTTP::Post.new("/")
+	request.add_field('Content-Type', 'application/json')
+	request.body = {'Body' => query}
+	response = http.request(request)
+	pp response
+end
+
 def get_url_from_track(query, number)
 	video = YoutubeSearch.search(query)[0]
 	pp video
