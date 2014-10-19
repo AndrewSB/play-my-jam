@@ -10,7 +10,6 @@ GEM
     httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
-    json (1.7.7)
     jwt (1.0.0)
     mimemagic (0.2.1)
     multi_json (1.10.1)
@@ -39,7 +38,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  json
   rack
   rapgenius
   sinatra
