@@ -11,6 +11,7 @@ post '/message'  do
 		text = hilals_lyrics(params["Body"], params["From"])
 	else
 		text = get_url_from_track(params["Body"], params["From"])
+	end
 	content_type "text/xml"
 	"<Response>
 		<Message>
