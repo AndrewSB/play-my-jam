@@ -6,11 +6,10 @@ require 'soundcloud'
 
 def search_by_lyrics(query)
 	strings = RapGenius.search_by_lyrics(query)[0..3].collect do | song |
-		{"title" => song.title, "artist" => song.artist.name}
-		#song.title + " - " + song.artist.name
+		#{"title" => song.title, "artist" => song.artist.name}
+		song.title + " - " + song.artist.name
 	end
-	strings.to_json
-	#strings.join("\n")
+	strings.join("\n")
 
 end
 
