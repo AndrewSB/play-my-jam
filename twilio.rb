@@ -5,7 +5,7 @@ require './main'
 
 post '/message'  do
 	pp params
-	text = search_by_lyrics(params["Body"])
+	text = get_url_from_track(params["Body"])
 	content_type "text/xml"
 	"<Response>
 		<Message>
