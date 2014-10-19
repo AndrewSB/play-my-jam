@@ -18,10 +18,17 @@ def search_by_title(query, number)
 	end
 end
 
+def rap_genius_from_name(query, number)
+	rapgenius_object_id = RapGenius.search_by_lyrics(query)[0]["id"]
+	"genius.com/songs/" + id
+end
+
 def get_url_from_track(query, number)
 	video = YoutubeSearch.search(query)[0]
+	rap_genius_from_name(query, number)
 	pp video
 	video_id = video["video_id"]
+	send_message(video["title"], number)
 	make_call(video_id, video, number)
 	video
 end
@@ -44,4 +51,19 @@ def make_call(video_id, video, number)
 		:record => 'false'
 	})
 	video
+end
+
+def send_message(body, number)
+	account_sid = 'AC39cfed8c7714f14d7d48e462fa809a20' 
+	auth_token = '835f421ebd9035525705eb827d2a9935'  
+	 
+	 body.slice! "video"
+	# set up a client to talk to the Twilio REST API 
+	@client = Twilio::REST::Client.new account_sid, auth_token 
+
+	@client.messages.create(
+  		from: '+19182129899',
+ 		to: number,
+ 	 	body: body
+)
 end
