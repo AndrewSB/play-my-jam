@@ -25,7 +25,6 @@ end
 
 def get_url_from_track(query, number)
 	video = YoutubeSearch.search(query)[0]
-	rap_genius_from_name(query, number)
 	pp video
 	video_id = video["video_id"]
 	send_message(video["title"], number)
