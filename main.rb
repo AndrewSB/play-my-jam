@@ -3,6 +3,7 @@ require 'pp'
 require 'json'
 require 'soundcloud'
 require 'twilio-ruby'
+require 'youtube_search'
 
 def search_by_lyrics(query)
 	strings = RapGenius.search_by_lyrics(query)[0..2].collect do | song |
@@ -18,15 +19,14 @@ def search_by_title(query)
 end
 
 def get_url_from_track(query)
-	client = SoundCloud.new(:client_id => "5d2e84914f361b7350f4f7ece1b223fa")
-	tracks = client.get('/tracks', :q => query)
-	curTrack = tracks[0]
-	stream_url = client.get(curTrack.stream_url, :allow_redirects => true)
-	pp stream_url.location
-	make_call
+	video = YoutubeSearch.search(query)[0]
+	pp video
+	video_id = video["video_id"]
+	make_call(video_id, video)
+	video
 end
 
-def make_call
+def make_call(video_id, video)
 	# put your own credentials here 
 	account_sid = 'AC39cfed8c7714f14d7d48e462fa809a20' 
 	auth_token = '835f421ebd9035525705eb827d2a9935'  
@@ -37,10 +37,11 @@ def make_call
 	@client.account.calls.create({
 		:to => '12483456497', 
 		:from => '+19182129899', 
-		:url => "http://anything2mp3.com/system/temporary/mp3/%5BNO%20MOUTH%20EMOJI%5D_youtube_36p96NjMb-s.mp3",
+		:url => "http://YouTubeInMP3.com/fetch/?video=http://www.youtube.com/watch?v=" + video_id,
 		:method => 'GET',  
 		:fallback_method => 'GET',  
 		:status_callback_method => 'GET',    
 		:record => 'false'
 	})
+	video
 end
