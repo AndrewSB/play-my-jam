@@ -11,6 +11,7 @@ auth_token = '835f421ebd9035525705eb827d2a9935'
 post '/message'  do
 	if params["Body"].include? "-num"
 		params_body = params["Body"]
+		pp "params body " + params_body
 		from = params_body.index("-num") + 5
 		text = current_production_call(params_body, params_body[from..-1])
 	else
