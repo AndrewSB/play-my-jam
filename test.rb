@@ -6,8 +6,8 @@ require 'twilio-ruby'
 require 'youtube_search'
 
 
-#number = "+17187533087"
-number = "+12483456497"
+number = "+17187533087"
+
 body = "Hey Ricky, we're a hack at Boilermake and Greg told us to send you a call with Taylor Swift's Shake it Off"
 
 account_sid = 'AC39cfed8c7714f14d7d48e462fa809a20' 
