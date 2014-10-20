@@ -10,7 +10,7 @@ post '/message'  do
 	if params["Body"].include? "-num"
 		params_body = params["Body"]
 		from = params_body.index("-num") + 5
-		text = current_production_call(params_body, params_body[from..-1])
+		text = current_production_call(params_body, params_body[(from.to_i)..-1])
 	else
 		text = current_production_call(params_body, params["From"])
 	end
