@@ -8,11 +8,11 @@ auth_token = '835f421ebd9035525705eb827d2a9935'
 
 post '/message'  do
 	if params["Body"].include? "-num"
-		from = params["Body"].index("-num") + 5
-
-		text = current_production_call(params["Body"], params["Body"][from..-1])
+		params_body = params["Body"]
+		from = params_body.index("-num") + 5
+		text = current_production_call(params_body, params_body[from..-1])
 	else
-		text = current_production_call(params["Body"], params["From"])
+		text = current_production_call(params_body, params["From"])
 	end
 	content_type "text/xml"
 	"<Response>
