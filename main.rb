@@ -4,6 +4,7 @@ require 'json'
 require 'soundcloud'
 require 'twilio-ruby'
 require 'youtube_search'
+require 'sinatra'
 
 def search_by_lyrics(query, number)
 	strings = RapGenius.search_by_lyrics(query)[0..2].collect do | song |
@@ -18,12 +19,22 @@ def search_by_title(query, number)
 	end
 end
 
+get '/status' do
+    'Everything Good My Money Real Good ;)'
+end
+    
+
+get '/' do
+    'Nothin\' here homie'
+end
+
 def rap_genius_from_name(query, number)
 	rapgenius_object_id = RapGenius.search_by_lyrics(query)[0]["id"]
 	"genius.com/songs/" + id
 end
 
 def hilals_lyrics(query, number)
+
 	uri = URI.parse("http://gaasme.ngrok.com")
 	http = Net::HTTP.new(uri.host, uri.port)
 	request = Net::HTTP::Post.new("/incoming")
