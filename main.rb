@@ -6,71 +6,12 @@ require 'twilio-ruby'
 require 'youtube_search'
 require 'sinatra'
 
-def search_by_lyrics(query, number)
-	strings = RapGenius.search_by_lyrics(query)[0..2].collect do | song |
-		song.title + " - " + song.artist.name
-	end
-	strings.join("\n")
-end
-
-def search_by_title(query, number)
-	strings = RapGenius.search_by_title(query)[0..5].collect do | song |
-		puts song
-	end
-end
-
 get '/status' do
     'Everything Good My Money Real Good ;)'
 end
 
-
 get '/' do
     'Nothin\' here homie'
-end
-
-def rap_genius_from_name(query, number)
-	rapgenius_object_id = RapGenius.search_by_lyrics(query)[0]["id"]
-	"genius.com/songs/" + id
-end
-
-def hilals_lyrics(query, number)
-
-	uri = URI.parse("http://gaasme.ngrok.com")
-	http = Net::HTTP.new(uri.host, uri.port)
-	request = Net::HTTP::Post.new("/incoming")
-	request.body = {'Body' => query}
-	response = http.request(request)
-	pp response
-end
-
-def get_url_from_track(query, number)
-	video = YoutubeSearch.search(query)[0]
-	puts video
-	pp "just printed video ^"
-	video_id = video["video_id"]
-	puts "video_id" + video_id
-	send_message(video["title"], number)
-	make_call(video_id, video, number)
-	video
-end
-
-def send_song_to_friend(query, number, ognumber)
-	video = YoutubeSearch.search(query)[0]
-	puts query
-	puts video
-	pp "just printed video ^"
-	video_id = video["video_id"]
-	puts "video_id" + video_id
-	ognumber_message = "just sent " + video["title"] + " to " + number + " #playmyjam"
-	send_message(ognumber_message, ognumber)
-	send_message(video["title"], number)
-	make_call(video_id, video, number)
-	video
-end
-
-def current_production_call(query, number)
-	get_url_from_track(query, number)
-	#hilals_lyrics(query, number)
 end
 
 def make_call(video_id, video, number)
