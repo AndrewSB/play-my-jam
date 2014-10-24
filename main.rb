@@ -22,7 +22,7 @@ end
 get '/status' do
     'Everything Good My Money Real Good ;)'
 end
-    
+
 
 get '/' do
     'Nothin\' here homie'
@@ -56,6 +56,7 @@ end
 
 def send_song_to_friend(query, number, ognumber)
 	video = YoutubeSearch.search(query)[0]
+	puts query
 	puts video
 	pp "just printed video ^"
 	video_id = video["video_id"]
@@ -73,32 +74,32 @@ def current_production_call(query, number)
 end
 
 def make_call(video_id, video, number)
-	# put your own credentials here 
+	# put your own credentials here
 	account_sid = 'AC39cfed8c7714f14d7d48e462fa809a20'
 	auth_token = '835f421ebd9035525705eb827d2a9935'
-	
-	# set up a client to talk to the Twilio REST API 
-	@client = Twilio::REST::Client.new account_sid, auth_token 
-	 
+
+	# set up a client to talk to the Twilio REST API
+	@client = Twilio::REST::Client.new account_sid, auth_token
+
 	@client.account.calls.create({
-		:to => number, 
-		:from => '+19182129899', 
+		:to => number,
+		:from => '+19182129899',
 		:url => "http://YouTubeInMP3.com/fetch/?video=http://www.youtube.com/watch?v=" + video_id,
-		:method => 'GET',  
-		:fallback_method => 'GET',  
-		:status_callback_method => 'GET',    
+		:method => 'GET',
+		:fallback_method => 'GET',
+		:status_callback_method => 'GET',
 		:record => 'false'
 	})
 	video
 end
 
 def send_message(body, number)
-	account_sid = 'AC39cfed8c7714f14d7d48e462fa809a20' 
-	auth_token = '835f421ebd9035525705eb827d2a9935'  
-	 
+	account_sid = 'AC39cfed8c7714f14d7d48e462fa809a20'
+	auth_token = '835f421ebd9035525705eb827d2a9935'
+
 	 body.slice! "video"
-	# set up a client to talk to the Twilio REST API 
-	@client = Twilio::REST::Client.new account_sid, auth_token 
+	# set up a client to talk to the Twilio REST API
+	@client = Twilio::REST::Client.new account_sid, auth_token
 
 	@client.messages.create(
   		from: '+19182129899',
