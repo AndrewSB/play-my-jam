@@ -17,7 +17,7 @@ post '/message'  do
 		text = send_song_to_friend(song_name_minus_number, friend_number, params["From"])
 		puts text
 	else
-		text = current_production_call(params["Body"], params["From"])
+		text = get_url_from_track(params["Body"], params["From"])
 	end
 	content_type "text/xml"
 	"<Response>
