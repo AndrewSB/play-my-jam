@@ -30,5 +30,3 @@ def send_song_to_friend(query, number, ognumber)
   make_call(video_id, video, number)
   video
 end
-
-this = get_url_from_track("doses and mimosas", "2483456497")
