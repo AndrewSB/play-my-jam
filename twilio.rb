@@ -9,13 +9,22 @@ auth_token = '835f421ebd9035525705eb827d2a9935'
 
 post '/message'  do
 	puts "accepted things"
+	friend_number = params["From"];
+	til = "";
 	if params["Body"].include? "-num"
 		params_body = params["Body"]
 		from = params_body.index("-num") + 5
+		til = params_body.index(" ", from)
 		song_name_minus_number = params_body[0..(from - 6)]
-		friend_number =  params_body[from..-1]
+		friend_number =  params_body[from..til]
 		text = send_song_to_friend(song_name_minus_number, friend_number, params["From"])
 		puts text
+	if params["Body"].include? "-say"
+		params_body = params["Body"]
+		from = params_body.index("-say") + 5
+		if til != ""
+
+		friend_number =  params_body[from..-1]
 	else
 		text = get_url_from_track(params["Body"], params["From"])
 	end
