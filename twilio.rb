@@ -19,7 +19,15 @@ post '/message'  do
 		friend_number =  params_body[from..til]
 		text = send_song_to_friend(song_name_minus_number, friend_number, params["From"])
 		puts text
-	if params["Body"].include? "-say"
+		if params["Body"].include? "-say"
+			params_body = params["Body"]
+			say_end = params_body.index("-say") + 5
+			body = params_body[say_end..-1]
+			if from != ""
+				body = params_body[say_end..from]
+			end
+		end
+	elsif params["Body"].include? "-say"
 		params_body = params["Body"]
 		say_end = params_body.index("-say") + 5
 		body = params_body[say_end..-1]

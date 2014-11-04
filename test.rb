@@ -1,15 +1,8 @@
-require 'rapgenius'
-require 'pp'
-require 'json'
-require 'soundcloud'
-require 'twilio-ruby'
-require 'youtube_search'
-
-query = "query"
-
-video = YoutubeSearch.search(query)[0]
-puts query
-puts video
-pp "just printed video ^"
-video_id = video["video_id"]
-puts "video_id" + video_id
+if 1==1
+  print "1=1"
+end
+if 2==2
+  print "2=2"
+else
+  print "fuck you failure not understaind elsif"
+end
