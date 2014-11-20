@@ -11,29 +11,29 @@ post '/message'  do
 	puts "accepted things"
 	friend_number = params["From"];
 	from = "";
-	if params["Body"].include? "-num"
-		params_body = params["Body"]
+	params_body = params["Body"]
+
+	if params["Body"].include? "-say"
+		say_end = params_body.index("-say") + 5
+		body = params_body[say_end..-1]
+		if params["Body"].include? "-num"
+			from = params_body.index("-num") + 5
+			til = params_body.index(" ", (from+5))
+			song_name_minus_number = params_body[0..(from - 6)]
+			friend_number =  params_body[from..-1]
+			text = say_message(body, friend_number)
+			puts text
+		else
+			text = say_message(body, params["From"])
+		end
+		puts text
+	elsif params["Body"].include? "-num"
 		from = params_body.index("-num") + 5
 		til = params_body.index(" ", from)
 		song_name_minus_number = params_body[0..(from - 6)]
 		friend_number =  params_body[from..-1]
 		text = send_song_to_friend(song_name_minus_number, friend_number, params["From"])
 		puts text
-		if params["Body"].include? "-say"
-			params_body = params["Body"]
-			say_end = params_body.index("-say") + 5
-			body = params_body[say_end..-1]
-			if from != ""
-				body = params_body[say_end..from]
-			end
-		end
-	elsif params["Body"].include? "-say"
-		params_body = params["Body"]
-		say_end = params_body.index("-say") + 5
-		body = params_body[say_end..-1]
-		if from != ""
-			body = params_body[say_end..from]
-		end
 	else
 		text = get_url_from_track(params["Body"], params["From"])
 	end

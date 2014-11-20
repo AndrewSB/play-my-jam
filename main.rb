@@ -11,7 +11,7 @@ get '/status' do
 end
 
 get '/' do
-    'Nothin\' here homie'
+    'Nothing here'
 end
 
 def make_call(video_id, video, number)
