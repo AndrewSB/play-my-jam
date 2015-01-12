@@ -6,10 +6,6 @@ require 'twilio-ruby'
 require 'youtube_search'
 require 'sinatra'
 
-get '/status' do
-    'Everything Good My Money Real Good ;)'
-end
-
 get '/' do
     'Nothing here'
 end
