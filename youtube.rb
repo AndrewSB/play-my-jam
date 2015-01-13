@@ -20,7 +20,9 @@ def get_url_from_track(query, number)
     http.request(req)
   }
   pp res.body
+  pp "making call"
   make_call(video_id, video, number)
+  pp "made call"
   video
 end
 
