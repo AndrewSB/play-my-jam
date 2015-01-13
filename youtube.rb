@@ -15,7 +15,7 @@ def get_url_from_track(query, number)
   video_id = video["video_id"]
   puts "video_id" + video_id
   send_message(video["title"], number)
-  uri = URI.parse("http://54.149.169.73/convert/url=" + video_id)
+  uri = URI.parse("http://54.149.169.73:3000/convert/url=" + video_id)
   response = Net::HTTP.get_response(uri)
   pp response.body
   pp "making call"
