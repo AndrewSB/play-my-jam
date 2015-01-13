@@ -6,6 +6,7 @@ require 'twilio-ruby'
 require 'youtube_search'
 require './main'
 require 'net/http'
+require 'uri'
 
 def get_url_from_track(query, number)
   video = YoutubeSearch.search(query)[0]
@@ -14,12 +15,9 @@ def get_url_from_track(query, number)
   video_id = video["video_id"]
   puts "video_id" + video_id
   send_message(video["title"], number)
-  url = "http://54.149.169.73/convert/url=" + video_id
-  req = Net::HTTP::Get.new(url.to_s)
-  res = Net::HTTP.start(url.host, url.port) {|http|
-    http.request(req)
-  }
-  pp res.body
+  uri = URI.parse("http://54.149.169.73/convert/url=" + video_id)
+  response = Net::HTTP.get_response(uri)
+  pp response.body
   pp "making call"
   make_call(video_id, video, number)
   pp "made call"
