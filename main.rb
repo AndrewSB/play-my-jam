@@ -21,7 +21,7 @@ def make_call(video_id, video, number)
 	@client.account.calls.create({
 		:to => number,
 		:from => '+19182129899',
-		:url => "http://54.149.169.73" + video_id,
+		:url => "http://54.149.169.73:3000/tmp" + video_id + "/music.mp3",
 		:method => 'GET',
 		:fallback_method => 'GET',
 		:status_callback_method => 'GET',
